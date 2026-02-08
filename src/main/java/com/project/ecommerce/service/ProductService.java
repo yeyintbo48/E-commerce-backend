@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 import com.project.ecommerce.model.Product;
 import com.project.ecommerce.repository.ProductRepository;
 
-
-
 @Service
 public class ProductService {
     @Autowired

@@ -1,11 +1,15 @@
 package com.project.ecommerce.model;
 
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,8 +32,13 @@ public class Product {
     private String companyname;
 
     private String description;
-    private double price;
+    private Double price;
     private int quantity;
     private String category;
     private LocalDate releaseDate;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "category_id")
+    private Category categoryId;
 }
